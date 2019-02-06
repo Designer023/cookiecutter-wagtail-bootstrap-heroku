@@ -1,0 +1,16 @@
+{% raw %}
+<table style="width: 100%;">
+    <tr>
+        {% for child in children.values %}
+            <td {% if child.block.required %} class="required"{% endif %} style="width: 20%;">
+                {% if child.block.label %}
+                    <label{% if child.id_for_label %} for="{{ child.id_for_label }}"{% endif %}>{{ child.block.label }}:</label>
+                {% endif %}
+                <div style="margin-left: 0.5em; margin-right: 1em;">
+                {{ child.render_form }}
+                </div>
+            </td>
+        {% endfor %}
+    </tr>
+</table>
+{% endraw %}

@@ -1,0 +1,9 @@
+{% raw %}
+<div class="alert {% if value.dismissable %} alert-dismissible {% endif %} alert-{{ value.background_theme }}">
+    {% if value.dismissable %}
+        <button type="button" class="close" data-dismiss="alert">×</button>
+    {% endif %}
+    {% if value.title %}<h4 class="alert-heading">{{ value.title }}</h4>{% endif %}
+    {{ value.content }}
+</div>
+{% endraw %}

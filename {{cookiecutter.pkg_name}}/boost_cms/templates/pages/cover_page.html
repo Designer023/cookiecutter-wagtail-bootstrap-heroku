@@ -1,0 +1,36 @@
+{% raw %}{% extends "base.html" %}
+{#{% load wagtailcore_tags wagtailimages_tags static %}#}
+
+{% load static %}
+
+{% block page_header %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center text-uppercase">
+            <h1 class="display-4">{{ page.title }}</h1>
+            {% if page.sub_title %}
+                <h2 class="lead">{{ page.sub_title }}</h2>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock page_header %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 ">
+                <article>
+
+                    {% for block in page.page_body %}
+                        <section class="block-{{ block.block_type }}">
+                            {% include "global_utils/streamfield/render.html" %}
+                        </section>
+                    {% endfor %}
+
+                </article>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% endraw %}

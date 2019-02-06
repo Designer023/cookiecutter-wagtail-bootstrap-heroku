@@ -1,0 +1,16 @@
+{% raw %}{% load wagtailcore_tags static %}
+
+{# INPUT: block #}
+{# Handles the rendering of components in a StreamField loop #}
+{% if block.block_type == 'row' %}
+    {% include "global_utils/streamfield/blocks/row.html" %}
+{% elif block.block_type == 'image' %}
+
+    {% include "global_utils/streamfield/blocks/image.html" %}
+
+{% else %}
+
+    {% include_block block %}
+
+{% endif %}
+{% endraw %}

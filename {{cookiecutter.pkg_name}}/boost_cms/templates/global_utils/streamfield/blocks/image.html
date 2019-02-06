@@ -1,0 +1,16 @@
+{% raw %}{% load wagtailimages_tags %}
+
+{% image block.value fill-600x400 as sm_image %}
+{% image block.value fill-800x600 as md_image %}
+{% image block.value fill-1024x760 as lg_image %}
+{% image block.value fill-1200x900 as full_image %}
+
+<img srcset="{{ sm_image.url }} 600w,
+             {{ md_image.url }} 800w,
+             {{ lg_image.url }} 1024w"
+     sizes="(max-width: 576px) 600px,
+            (max-width: 800px) 800px,
+            1200px"
+     src="{{ full_image.url }}" {# Todo: Add alt #}
+     class="img-fluid" />
+{% endraw %}

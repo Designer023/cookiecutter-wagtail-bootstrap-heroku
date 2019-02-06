@@ -1,0 +1,77 @@
+{% raw %}{% load blog_pagination_tags %}
+
+<div class="container">
+    <div class="row align-items-center">
+
+        {# Page index #}
+        <div class="col-3">
+            <div class="">
+                Showing: {{ paginated_objects.start_index }}&nbsp;to&nbsp;{{ paginated_objects.end_index }}&nbsp;of&nbsp;{{ paginated_objects.paginator.count }} posts
+            </div>
+        </div>
+
+        <div class="col-6">
+            <nav aria-label="Page navigation">
+
+                {# Pages #}
+                <ul class="pagination justify-content-center mb-0">
+
+
+                    {# First #}
+                    <li class="page-item">
+                        {% if paginated_objects.has_previous %}
+                            <a href="{% paginationpageurl page "pagninated_index_page" 1 pagination_query_string %}" class="page-link"><i class="icon icon-chevron-left"></i>First</a>
+                        {% else %}
+                            <span class="page-link"><i class="icon icon-chevron-left"></i>First</span>
+                        {% endif %}
+                    </li>
+
+
+                    {# Last #}
+                    <li class="page-item">
+                        {% if paginated_objects.paginator.num_pages != 1 and paginated_objects.has_next %}
+                            <a href="{% paginationpageurl page "pagninated_index_page" paginated_objects.paginator.num_pages pagination_query_string %}" class="page-link"><i class="icon icon-chevron-right"></i>Last</a>
+                        {% else %}
+                            <span class="page-link"><i class="icon icon-chevron-right"></i>Last</span>
+                        {% endif %}
+                    </li>
+
+                    {# Pages by number #}
+                    {% for page_num in paginated_objects.paginator.page_range %}
+                        <li class="page-item">
+                            <a href="{% paginationpageurl page "pagninated_index_page" page_num pagination_query_string %}" class="page-link {% if page_num == paginated_objects.number %}active{% endif %}">{{ page_num }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {# Previous #}
+                    <li class="page-item">
+                        {% if paginated_objects.has_previous %}
+                            <a {% if render_prev_next %}rel="prev"{% endif %} href="{% paginationpageurl page "pagninated_index_page" paginated_objects.previous_page_number pagination_query_string %}" class="page-link"><i class="icon icon-chevron-left"></i> Previous</a>
+                        {% else %}
+                            <span class="page-link"><i class="icon icon-chevron-left"></i> Previous</span>
+                        {% endif %}
+                    </li>
+
+
+                    {# Next #}
+                    <li class="page-item">
+                        {% if paginated_objects.has_next %}
+                            {# No logic required for first page one as page 1 can never be next! #}
+                            <a {% if render_prev_next %}rel="next"{% endif %} href="{% paginationpageurl page "pagninated_index_page" paginated_objects.next_page_number pagination_query_string %}" class="page-link"><i class="icon icon-chevron-right"></i>Next</a>
+                        {% else %}
+                            <span class="page-link"><i class="icon icon-chevron-right"></i>Next</span>
+                        {% endif %}
+                    </li>
+
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="col-3">
+            {% include "blog/page_size.html" %}
+        </div>
+    </div>
+
+</div>
+{% endraw %}

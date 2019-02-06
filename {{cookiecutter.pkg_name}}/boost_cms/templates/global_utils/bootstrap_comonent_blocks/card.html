@@ -1,0 +1,48 @@
+{% raw %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+
+<div class="card text-{{ value.text_theme }} bg-{{ value.background_theme }} border-{{ value.border_theme }} mb-3 {{ value.extra_classes }}"
+     {% if value.custom_styles %} style="{{ value.custom_styles }}" {% endif %}>
+
+    {% if value.header %}
+        <div class="card-header">{{ value.header }}</div>
+    {% endif %}
+
+    <div class="card-body">
+
+        {% if value.title %}
+            <h4 class="card-title">{{ value.title}}</h4>
+        {% endif %}
+
+        {{ value.content }} {# TODO: Add card-text class to all or last p node! eg: <p class="card-text">CONTENT</p> #}
+
+        {% if value.content_list %}
+            {% for block in value.content_list %}
+
+                {% if block.block_type == 'image' %}
+                    {% image block.value fill-600x400 as sm_image %}
+                    {% image block.value fill-800x600 as md_image %}
+                    {% image block.value fill-1024x760 as lg_image %}
+                    {% image block.value fill-1200x900 as full_image %}
+
+                    <img class="img-fluid" src="{{ my_image.url }}" width="{{ my_image.width }}" height="{{ my_image.height }}">
+
+                    <img srcset="{{ sm_image.url }} 600w,
+             {{ md_image.url }} 800w,
+             {{ lg_image.url }} 1024w"
+                         sizes="(max-width: 576px) 600px,
+            (max-width: 800px) 800px,
+            1200px"
+                         src="{{ full_image.url }}" {# Todo: Add alt #}
+                         class="img-fluid" />
+                {% else %}
+                    {% include_block block %}
+                {% endif %}
+
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</div>
+{% endraw %}

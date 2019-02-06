@@ -1,0 +1,17 @@
+{% raw %}{% load bootstrap_grid_tags %}
+
+<div class="container">
+    <div class="row">
+        {% for sub_block in block.value.content_list %}
+            {% if sub_block.block_type == 'column' %}
+                <div class="col-12 {% column_classes sub_block %}">
+                    {% for block in sub_block.value.content %}
+                        {% include "global_utils/streamfield/sub_render.html" %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+{% endraw %}

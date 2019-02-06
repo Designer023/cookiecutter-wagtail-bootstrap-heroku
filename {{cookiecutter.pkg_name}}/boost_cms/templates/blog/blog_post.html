@@ -1,0 +1,72 @@
+{% raw %}{% extends "base.html" %}
+
+{% load wagtailcore_tags static %}
+
+
+{% block page_header %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">{{ page.title }}</h1>
+            {% if page.sub_title %}
+            <h2 class="lead">{{ page.sub_title }}</h2>
+            {% endif %}
+            <hr class="my-4">
+            <p>Published on: {{ page.date|date:"D d M Y" }}</p>
+
+        </div>
+    </div>
+{% endblock page_header %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 ">
+                {% if page.tags.all.count %}
+                    <div class="tags">
+                        <h3>Tags</h3>
+                        {% for tag in page.tags.all %}
+                            <a href="{{ self.get_parent.url }}?tag={{ tag.slug }}" >{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>No tags for this post</p>
+                {% endif %}
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 ">
+
+                {% with categories=page.categories.all %}
+                    {% if categories %}
+                        <h3>Categories</h3>
+                        <ul>
+                            {% for category in categories %}
+                                <li style="display: inline">
+                                    <a href="{{ self.get_parent.url }}?category={{ category.slug }}" >{{ category }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No categories for this post</p>
+                    {% endif %}
+                {% endwith %}
+                <hr />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 ">
+                <article>
+                    {% for block in page.page_body %}
+                        <section class="block-{{ block.block_type }}">
+                            {% include_block block %}
+                        </section>
+                    {% endfor %}
+                </article>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% endraw %}

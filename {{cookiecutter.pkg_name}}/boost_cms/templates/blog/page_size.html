@@ -1,0 +1,19 @@
+{% raw %}
+{# Page size #}
+{% load blog_pagination_tags %}
+
+
+<nav aria-label="Page navigation pagesize">
+    <div class="text-right">Show:
+        {% for page_size in default_page_sizes %}
+            {% if current_page_size == page_size %}
+                <span class="">{{ page_size }}</span>
+            {% else %}
+                <a href="{{ page.url }}?page_size={{ page_size }}">{{ page_size }}</a>
+            {% endif %}
+            {% if not forloop.last %}|{% endif %}
+        {% endfor %}
+    </div>
+
+</nav>
+{% endraw %}
