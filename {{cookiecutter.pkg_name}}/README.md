@@ -32,38 +32,26 @@ python manage.py runserver [localhost:port]
 
 ## Heroku install
 **Note: these instructions are not custom yet. Taken from the excellent cookiecuuter django project**
+
+
+```bash
+heroku create
+heroku buildpacks:set heroku/python --app heroku-app-name-12345
+heroku buildpacks:add --index 1 heroku/nodejs --app heroku-app-name-12345
+heroku config:set DISABLE_COLLECTSTATIC=1 --app heroku-app-name-12345
+heroku addons:create heroku-postgresql:hobby-dev --app heroku-app-name-12345
+heroku config:set DJANGO_SETTINGS_MODULE=YOUR_APP_NAME.settings.production --app heroku-app-name-12345
+
+SITE_HOST_URL=HEROKU_APP_URL
+AWS_ACCESS_KEY_ID=XXXXXXX
+AWS_SECRET_ACCESS_KEY=YYYYYYYY
+AWS_STORAGE_BUCKET=BUCKET_NAME
+
 ```
-heroku create --buildpack https://github.com/heroku/heroku-buildpack-python
-heroku addons:create heroku-postgresql:hobby-dev
-### On Windows use double quotes for the time zone, e.g.
-### heroku pg:backups schedule --at "02:00 America/Los_Angeles" DATABASE_URL
-heroku pg:backups schedule --at '02:00 America/Los_Angeles' DATABASE_URL
-heroku pg:promote DATABASE_URL
 
-heroku addons:create heroku-redis:hobby-dev
+```
 
-heroku addons:create sentry:f1
-
-heroku config:set PYTHONHASHSEED=random
-
-heroku config:set WEB_CONCURRENCY=4
-
-heroku config:set DJANGO_DEBUG=False
-heroku config:set DJANGO_SETTINGS_MODULE=pkg_name.settings.production
-heroku config:set DJANGO_SECRET_KEY="$(openssl rand -base64 64)"
-
-### Set this to your Heroku app url, e.g. 'bionic-beaver-28392.herokuapp.com'
-heroku config:set DJANGO_ALLOWED_HOSTS=
-
-### Assign with AWS_ACCESS_KEY_ID
-heroku config:set DJANGO_AWS_ACCESS_KEY_ID=
-
-### Assign with AWS_SECRET_ACCESS_KEY
-heroku config:set DJANGO_AWS_SECRET_ACCESS_KEY=
-
-### Assign with AWS_STORAGE_BUCKET_NAME
-heroku config:set DJANGO_AWS_STORAGE_BUCKET_NAME=
-
+heroku git:remote -a heroku-app-name-12345
 git push heroku master
 
 heroku run python manage.py migrate
