@@ -120,5 +120,9 @@ dmypy.json
 .idea
 
 # Exclude media and static collection files in root
-media
-static
+media_files
+static_files
+node_modules
+
+{{cookiecutter.pkg_name}}/static/dev
+{{cookiecutter.pkg_name}}/static/prod

@@ -13,6 +13,7 @@ ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+WEBPACK_STATIC_PATH='dev/'
 
 try:
     from .local import *

@@ -1,0 +1,82 @@
+// Hello and welcome to the White labelled Bootstrap app
+// It's designed to separate the areas of concern into managable pieces that (in most cases) can be
+// quickly adapted to another project.
+
+// The config is split into a few areas...
+// 1.  FUNCTIONS  - These must be before anythong else so we can caululate and transform properties
+// 2.  VARIABLES  - Bootstrap variables, overrides and custom variables that are used for designing...
+// 3.  COMPONENTS - SASS/CSS for bootstrap components, shared components and custom components
+//        - BOOTSTRAP - Core bootstrap components
+//        - SHARED    - Components that can be installed from NPM and use the BS vars and classes
+//        - UNIQUE    - Just for this project and nowhere else!
+// 99. HACKSFIXES - A place to keep all the bad code we don't want to write!
+
+// 1. FUNCTIONS
+// Import bootstrap's core functions. These are needed for some calculations/transformations on variables!
+// This must be before anything else as these are needed everywhere!
+// You can also import shared or bespoke functions here (although they would only be used after other BS imports so could go there too!)
+@import "~bootstrap/scss/functions";
+
+
+// 2. VARIABLES
+// Import custom overrides to the variables. We only need to override the variables we want to change because...
+@import "config/boostrap-variable-overrides";
+// We then import the core boostrap variables to make sure all variables are available to the components
+// Any variable that has been set previously is not updated so this just fills in the gaps!
+@import "~bootstrap/scss/variables";
+
+// Import custom variables if you have any. This could be after the component import but lets keep config in one place
+@import "config/custom-variables";
+
+
+// 3. COMPONENTS
+// Just a list of all the bootstrap components we use imported from the bootstrap package
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+
+// Shared components. In an ideal world these would be NPM modules we can import into multiple projects as is!...
+// These should use bootstrap classes and variables where possible so we can use them straight into another project
+// @import "components/shared/a-shared-component-example";
+
+// Bespoke components
+// These are UNIQUE to this project and would never be a NPM package since they are tightly coupled to THIS PROJECT ONLY
+// @import "components/bespoke/a-bespoke-component-example";
+
+
+// 99. HACKSFIXES
+// All the fixes and hacks we need to make these styles work on obscure browsers, devices and specific hacks for edge cases
+// Nothing here! Strange!
+// @import "hacks-fixes/browser-ie11";

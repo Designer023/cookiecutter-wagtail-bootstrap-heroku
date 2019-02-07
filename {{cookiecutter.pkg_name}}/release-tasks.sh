@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-#yarn run prod
-#
-#
+yarn run prod
+
+
 if [ -n "$SKIP_RELEASE" ]; then
     echo "Skipping database migrate phase!";
 else

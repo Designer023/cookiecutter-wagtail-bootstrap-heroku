@@ -1,5 +1,6 @@
 {
     "project_name": "wagtail_cms_bootstrap_heroku",
+    "description": "My project description",
     "repo_name": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
     "pkg_name": "{{ cookiecutter.project_name|lower|replace(' ', '_') }}",
     "postgres_hostname": "localhost",
