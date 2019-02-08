@@ -66,9 +66,15 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
+Run the server
+```bash
+python manage.py runserver
+```
+
 1. Login to admin ```http://127.0.0.1:8000/admin```
 2. Create a new root page
 3. Settings > sites > edit the exiting localhost to choose the new page as the root
+4. Visit ```http://127.0.0.1:8000``` to view your new homepage.
 
 ### Setup on Heroku
 
@@ -149,7 +155,7 @@ heroku buildpacks:add --index 1 heroku/nodejs
 
 ```bash
 # DJANGO SETTINGS
-heroku config:set heroku config:set DISABLE_COLLECTSTATIC=1
+heroku config:set DISABLE_COLLECTSTATIC=1
 heroku config:set DJANGO_SETTINGS_MODULE=PKG_NAME.settings.production
 heroku config:set SECRET_KEY=A_SECRET_KEY
 heroku config:set SITE_HOST_URL=smooth-pebbles-74623.herokuapp.com
@@ -181,4 +187,5 @@ Then create some initial pages:
 
 1. Login to admin ```https://smooth-pebbles-74623.herokuapp.com/admin```
 2. Create a new root page
-3. Settings > sites > edit the exiting localhost to choose the new page as the root
+3. Settings > sites > edit the exiting localhost to choose the new page as the root.
+4. Visit: ```https://smooth-pebbles-74623.herokuapp.com``` to view your new homepage.
