@@ -1,5 +1,11 @@
 # Cookiecutter Wagtail Bootstrap, with Heroku/S3 deployment
-CWBHSD for short
+
+Creates a templated project with:
+- Django Wagtail CMS
+- Webpack 4
+- Bootstrap 4
+- Heroku
+- AWS S3
 
 ## Installation
 
