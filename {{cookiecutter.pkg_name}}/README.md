@@ -2,33 +2,7 @@
 
 {{ cookiecutter.description }}
 
-Using: Cookiecutter Wagtail Bootstrap, with Heroku/S3 deployment
-
-## Installation
-
-### Create a new project
-
-Run the script in the diretcor you want your project to be store in. eg. ~/Sites
-
-```bash
-cookiecutter https://github.com/Designer023/cookiecutter-wagtail-bootstrap-heroku.git
-```
-
-**Answer the questions**
-
-```bash
-project_name [wagtail_cms_bootstrap_heroku]: Site Name
-project_description [My new project is awesome!]: This is project for something!
-repo_name [site-name]:
-pkg_name [site_name]:
-postgres_hostname [localhost]:
-postgres_port [5432]:
-postgres_database [site_name]:
-postgres_user [postgres]:
-postgres_password [postgres]:
-```
-
-A new project will be created in the ```{{cookiecutter.pkg_name}}``` directory.
+Using: [Cookiecutter Wagtail Bootstrap, with Heroku/S3 deployment](https://github.com/Designer023/cookiecutter-wagtail-bootstrap-heroku.git)
 
 ### Install locally
 

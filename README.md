@@ -5,7 +5,16 @@ CWBHSD for short
 
 ### Create a new project
 
-Run the script in the diretcor you want your project to be store in. eg. ~/Sites
+#### Install cookiecutter if not already installed
+See: https://cookiecutter.readthedocs.io/en/latest/installation.html
+
+Or run:
+```bash
+pip install --user cookiecutter
+```
+
+#### Create the project
+Run the script in the directory you want your project to be store in. eg. ~/Sites
 
 ```bash
 cookiecutter https://github.com/Designer023/cookiecutter-wagtail-bootstrap-heroku.git
