@@ -26,4 +26,4 @@ wagtail-react-streamfield = "*"
 
 [requires]
 
-python_version = "3.7.0"
+python_version = "3.6"

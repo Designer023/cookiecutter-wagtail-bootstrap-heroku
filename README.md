@@ -25,14 +25,14 @@ postgres_user [postgres]:
 postgres_password [postgres]:
 ```
 
-A new project will be created in the ```{{cookiecutter.pkg_name}}``` directory.
+A new project will be created in the ```pkg_name``` directory. ```PKG_NAME``` will be used in the examples below where you need to replace your details. 
 
 ### Install locally
 
 **Make sure you are in the package folder**.
 
 ```bash
-cd {{cookiecutter.pkg_name}}
+cd PKG_NAME
 ```
 
 #### Yarn/Node
@@ -54,7 +54,7 @@ pipenv install
 
 #### Database
 
-Create a database with the same name as you setup in the initial questions. This defaults to the same name as your ```{{cookiecutter.pkg_name}}```.
+Create a database with the same name as you setup in the initial questions. This defaults to the same name as your ```PKG_NAME```.
 
 ### Setup locally
 
@@ -150,14 +150,14 @@ heroku buildpacks:add --index 1 heroku/nodejs
 ```bash
 # DJANGO SETTINGS
 heroku config:set heroku config:set DISABLE_COLLECTSTATIC=1
-heroku config:set DJANGO_SETTINGS_MODULE={{cookiecutter.pkg_name}}.settings.production
+heroku config:set DJANGO_SETTINGS_MODULE=PKG_NAME.settings.production
 heroku config:set SECRET_KEY=A_SECRET_KEY
 heroku config:set SITE_HOST_URL=smooth-pebbles-74623.herokuapp.com
 
 # AWS
 heroku config:set AWS_ACCESS_KEY_ID=AWS_ACCESS_KEY_ID
 heroku config:set AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY
-heroku config:set AWS_STORAGE_BUCKET_NAME=BUCKET_NAME
+heroku config:set AWS_STORAGE_BUCKET_NAME=BUCKET_NAME 
 ```
 
 When these are all set you can push the code and it will:
